@@ -13,4 +13,4 @@ const notifications = [
     },
 ];
 
-export default posts
+export default notifications
