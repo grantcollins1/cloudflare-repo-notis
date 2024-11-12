@@ -18,7 +18,7 @@ const Notifications = () => {
             {notis.map(noti => (
                 <div key={noti.id}>
                     <h2>
-                        <Link to={'/notifications/${noti.id}'} > {noti.title}</Link>
+                        <Link to={`/notifications/${noti.id}`} > {noti.title}</Link>
                     </h2>
                 </div>
             ))}
