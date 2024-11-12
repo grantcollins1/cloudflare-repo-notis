@@ -33,6 +33,8 @@ const Notifications = () => {
                             <Link to={`/notifications/${noti.id}`}>{noti.title}</Link>
                         </h2>
                     </div>
+     
+                    
                 ))
             ) : (
                 <p>No notifications available.</p>
