@@ -17,8 +17,8 @@ const Notifications = () => {
                 text: 'second',
                 published_at: new Date('2020-10-26'),
             } ]
-            const notiResp = await resp.json();
-            setNotis(notiResp);
+            //const notiResp = await resp.json();
+            setNotis(resp);
         };
         getNotifications();
     }, []);
