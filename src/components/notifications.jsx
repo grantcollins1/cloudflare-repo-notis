@@ -15,13 +15,17 @@ const Notifications = () => {
     return (
         <div>
             <h1>Notifications</h1>
-            {notis.map(noti => (
-                <div key={noti.id}>
-                    <h2>
-                        <Link to={`/notifications/${noti.id}`} > {noti.title}</Link>
-                    </h2>
-                </div>
-            ))}
+            {notis.length > 0 ? (
+                notis.map(noti => (
+                    <div key={noti.id}>
+                        <h2>
+                            <Link to={`/notifications/${noti.id}`}>{noti.title}</Link>
+                        </h2>
+                    </div>
+                ))
+            ) : (
+                <p>No notifications available.</p>
+            )}
         </div>
     );
 };
