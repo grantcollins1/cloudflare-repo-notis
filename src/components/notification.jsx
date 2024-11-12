@@ -21,6 +21,12 @@ const Notification = () => {
         <div>
             <h1>{noti.title}</h1>
             <p>{noti.text}</p>
+            <p>
+                <em>Published {new Date(post.published_at).toLocaleString()}</em>
+            </p>
+            <p>
+                <Link to = "/">Go back</Link>
+            </p>
         </div>
     );
 
