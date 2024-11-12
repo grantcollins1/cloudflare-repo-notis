@@ -7,29 +7,32 @@ const Notification = () => {
 
     useEffect(() => {
         const getNotification = async () => {
-            const resp = await resp.json();
-            const notiResp = await resp.json();
-            setNotification(notiResp);
+            try {
+                const resp = await fetch(`/api/notifications/${id}`);
+                const notiResp = await resp.json();
+                setNotification(notiResp);
+            } catch (error) {
+                console.error("Error fetching notification:", error);
+            }
         };
 
         getNotification();
-
-        
     }, [id]);
-    if (!Object.keys(noti).length) return <div />;
+
+    if (!Object.keys(noti).length) return <div>Loading...</div>;
+
     return (
         <div>
             <h1>{noti.title}</h1>
             <p>{noti.text}</p>
             <p>
-                <em>Published {new Date(post.published_at).toLocaleString()}</em>
+                <em>Published {new Date(noti.published_at).toLocaleString()}</em>
             </p>
             <p>
-                <Link to = "/">Go back</Link>
+                <Link to="/">Go back</Link>
             </p>
         </div>
     );
-
 };
 
 export default Notification;
