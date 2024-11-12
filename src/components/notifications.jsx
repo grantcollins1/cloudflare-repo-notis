@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Notifications = () => {
-    const [notis, setNotis] = useState([]);
+    const [notifications, setNotis] = useState([]);
     useEffect( () => {
         const getNotifications = async () =>  {
             const resp = await fetch('/api/notifications');
@@ -15,8 +15,8 @@ const Notifications = () => {
     return (
         <div>
             <h1>Notifications</h1>
-            {notis.length > 0 ? (
-                notis.map(noti => (
+            {notifications.length > 0 ? (
+                notifications.map(noti => (
                     <div key={noti.id}>
                         <h2>
                             <Link to={`/notifications/${noti.id}`}>{noti.title}</Link>
