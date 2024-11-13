@@ -6,7 +6,7 @@ const Input = () => {
     const [val, setVal] = useState('')
     const [type, setType] = useState('');
     const click = (event) => {
-        NOTIFICATIONS.put("notifications", "ok")
+        context.env.NOTIFICATIONS.put("notifications", "ok")
         event.preventDefault()
         alert(type)
         fetch("/api/notifications", {
