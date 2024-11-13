@@ -1,16 +1,46 @@
-const notifications = [
+const samples = [
     {
-        id: 1,
-        title: 'My first blog post',
-        text: 'Hello!',
-        published_at: new Date('2020-10-23'),
+        "type": "success",
+        "content": {
+            "text" : "test1"
+        },
+        "read": false
+  },
+    {
+        "type": "alert",
+        "content": {
+            "text" : "ok den"
+        },
+        "read": false
     },
     {
-        id: 2,
-        title: 'Updating my blog',
-        text: 'second',
-        published_at: new Date('2020-10-26'),
+        "type": "alert",
+        "content": {
+            "text" : "ok den"
+        },
+        "read": false
     },
+    {
+        "type": "alert",
+        "content": {
+            "text" : "ok den"
+        },
+        "read": false
+    },
+    {
+        "type": "info",
+        "content": {
+            "text" : "ok yeah"
+        },
+        "read": false
+    },
+    {
+        "type": "alert",
+        "content": {
+            "text" : "ok den"
+        },
+        "read": false
+    }
 ];
 
-export default notifications
+export default samples

@@ -8,7 +8,7 @@ const Input = () => {
     const click = (event) => {
         event.preventDefault()
         alert(type)
-        fetch("../functions/api/notifications", {
+        fetch("/api/notifications", {
   method: "POST",
   body: JSON.stringify({
         "type": type,
@@ -18,6 +18,14 @@ const Input = () => {
         "read": false
   }),
 });
+
+    }
+    const wipe = (event) => {
+        event.preventDefault()
+        alert(type)
+        fetch("/api/notifications", {
+            method: "DELETE",
+        });
 
     }
     const handleSelectChange = (event) => {
@@ -39,6 +47,7 @@ const Input = () => {
                 <option value = 'success'>Success</option>
                </select>
                <button onClick = {click} id = 'send-notification-btn'>Send</button>
+               <button onClick = { wipe } id = 'delete-button'>Delete</button>
         </form>
     )
 

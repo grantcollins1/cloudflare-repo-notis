@@ -1,45 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/NotificationForm.css'
+import samples from '../notification/data'
 
 const Notifications = () => {
     const [notifications, setNotis] = useState([]);
     useEffect( () => {
         const getNotifications = async () =>  {
-            const resp = [{
-                id: 1,
-                title: 'My first blog post',
-                text: 'Hello!',
-                published_at: new Date('2020-10-23'),
-            },
-            {
-                id: 2,
-                title: 'Updating my blog',
-                text: 'second',
-                published_at: new Date('2020-10-26'),
-            } ]
-            //const notiResp = await resp.json();
-            setNotis(resp);
+            fetch("/api/notifications", {
+                method: "GET",
+            })
         };
+        setNotis(samples)
         getNotifications();
     }, []);
 
+
     return (
-        <div class = "container" id = "notification-feed">
-            <h1>Notifications</h1>
-            {notifications.length > 0 ? (
-                notifications.map(noti => (
-                    <div key={noti.id}>
-                        <h2>
-                            <Link to={`/notifications/${noti.id}`}>{noti.title}</Link>
-                        </h2>
+        <div id = "notification-feed">
+                {notifications.map(noti => (
+                    <div key = {noti.content.text} class = "notification-card" id = {noti.type}> {noti.content.text}
                     </div>
-     
-                    
-                ))
-            ) : (
-                <p>No notifications available.</p>
-            )}
+                ))}
         </div>
     );
 };
