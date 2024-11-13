@@ -22,7 +22,6 @@ const Input = () => {
     }
     const wipe = (event) => {
         event.preventDefault()
-        alert(type)
         fetch("/api/notifications", {
             method: "DELETE",
         });
@@ -35,6 +34,8 @@ const Input = () => {
     const change = (event) => {
         setVal(event.target.value)
     }
+    data = []
+    NOTIFICATIONS.put("notifications", data)
     return (
         <form id = "notification-form">
             <h4>Create Notification</h4>
