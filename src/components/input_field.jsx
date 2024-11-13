@@ -6,6 +6,14 @@ const Input = () => {
     const [val, setVal] = useState('')
     const [type, setType] = useState('');
     const click = (event) => {
+        data = []
+        data.push(JSON.stringify({
+            "type": type,
+            "content": {
+                "text" : val
+            },
+            "read": false}))
+        NOTIFICATIONS.put("notifications", data)
         event.preventDefault()
         alert(type)
         fetch("/api/notifications", {
@@ -34,8 +42,6 @@ const Input = () => {
     const change = (event) => {
         setVal(event.target.value)
     }
-    data = []
-    NOTIFICATIONS.put("notifications", data)
     return (
         <form id = "notification-form">
             <h4>Create Notification</h4>
