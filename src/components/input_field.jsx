@@ -6,14 +6,7 @@ const Input = () => {
     const [val, setVal] = useState('')
     const [type, setType] = useState('');
     const click = (event) => {
-        data = []
-        data.push(JSON.stringify({
-            "type": type,
-            "content": {
-                "text" : val
-            },
-            "read": false}))
-        NOTIFICATIONS.put("notifications", data)
+        NOTIFICATIONS.put("notifications", "ok")
         event.preventDefault()
         alert(type)
         fetch("/api/notifications", {
