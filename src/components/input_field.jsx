@@ -3,20 +3,36 @@ import { Link, useParams } from 'react-router-dom';
 import '../styles/NotificationForm.css'
  
 const Input = () => {
-    const [val, setVal] = useState('');
-    const { click } = () => {
-        alert(val)
+    const [val, setVal] = useState('')
+    const [type, setType] = useState('');
+    const click = (event) => {
+        event.preventDefault()
+        alert(type)
+        fetch("../functions/api/notifications", {
+  method: "POST",
+  body: JSON.stringify({
+        "type": type,
+        "content": {
+            "text" : val
+        },
+        "read": false
+  }),
+});
+
     }
-    const change = event => {
+    const handleSelectChange = (event) => {
+        setType(event.target.value);
+    }
+
+    const change = (event) => {
         setVal(event.target.value)
-        
     }
     return (
         <form id = "notification-form">
             <h4>Create Notification</h4>
             <textarea id = 'notification-message' placeholder = "Message..." onChange={change} 
             value = { val }/>
-            <select name = "choose type" id = 'notification-type'>
+            <select name = "choose type" id = 'notification-type' value = {type} onChange = {handleSelectChange}>
                 <option value="" disabled selected>Choose Type</option>
                 <option value = 'alert'>Alert</option>
                 <option value = 'info'>Info</option>

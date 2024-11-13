@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/NotificationForm.css'
 
 const Notifications = () => {
     const [notifications, setNotis] = useState([]);
@@ -24,7 +25,7 @@ const Notifications = () => {
     }, []);
 
     return (
-        <div>
+        <div class = "container" id = "notification-feed">
             <h1>Notifications</h1>
             {notifications.length > 0 ? (
                 notifications.map(noti => (
