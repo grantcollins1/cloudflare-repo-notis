@@ -5,8 +5,7 @@ import '../styles/NotificationForm.css'
 const Input = () => {
     const [val, setVal] = useState('')
     const [type, setType] = useState('');
-    const click = (event) => {
-        context.env.NOTIFICATIONS.put("notifications", "ok")
+    const click = (context, event) => {
         event.preventDefault()
         alert(type)
         fetch("/api/notifications", {

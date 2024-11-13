@@ -2,6 +2,9 @@
 addEventListener('fetch', event => {
     event.respondWith(handleRequest(event.request))
   })
+  export async function onRequest(context) {
+    await context.env.NOTIFICATIONS.put("notifications", "please work");
+  }
 
 async function handleRequest(request) {
     alert(request.method)
@@ -15,19 +18,19 @@ async function handleRequest(request) {
     }
   }
   
-  const setNotis = data => NOTIFICATIONS.put("notifications", data)
+  const setNotis = async (data, context) => await context.env.NOTIFICATIONS.put("notifications", data)
 
-  async function getNotifications(request) {
+  async function getNotifications(context) {
 
-    const body = await NOTIFICATIONS.get("notifications")
+    const body = await context.env.NOTIFICATIONS.get("notifications")
     return new Response(body, { status: 200 })
   }
 
-async function updateNotifications(request) {
+async function updateNotifications(context, request) {
     const body = await request.text()
     try {
       JSON.parse(body)
-      const data = await NOTIFICATIONS.get("notifications")
+      const data = await context.env.NOTIFICATIONS.get("notifications")
       data.push(body)
       await setNotis(data)
       return new Response(data, { status: 200 })
