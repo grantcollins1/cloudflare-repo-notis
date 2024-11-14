@@ -5,7 +5,7 @@ addEventListener('fetch', event => {
 
 async function handleRequest(request) {
     alert(request.method)
-    if (request.method === "PUT") {
+    if (request.method === "POST") {
       return updateNotifications(request);
     } else if (request.method === "GET") {
       return getNotifications(request);
