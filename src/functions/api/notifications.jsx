@@ -2,8 +2,10 @@
 addEventListener('fetch', event => {
     event.respondWith(handleRequest(event.request))
   })
+
   export async function onRequest(context) {
-    await context.env.NOTIFICATIONS.put("notifications", "please work");
+    return new Response('Hello from the worker!')
+   // await context.env.NOTIFICATIONS.put("notifications", "please work");
   }
 
 async function handleRequest(request) {

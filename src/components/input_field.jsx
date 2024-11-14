@@ -45,7 +45,7 @@ const Input = () => {
                 <option value = 'info'>Info</option>
                 <option value = 'success'>Success</option>
                </select>
-               <button onClick = {click} id = 'send-notification-btn'>Send</button>
+               <button onClick = {click} formaction="/api/notifications" id = 'send-notification-btn'>Send</button>
                <button onClick = { wipe } id = 'delete-button'>Delete</button>
         </form>
     )
