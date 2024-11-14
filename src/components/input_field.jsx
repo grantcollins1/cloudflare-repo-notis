@@ -34,8 +34,24 @@ const Input = () => {
     const change = (event) => {
         setVal(event.target.value)
     }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        const response = await fetch('/api/notifications', {
+          method: 'POST',
+          body: JSON.stringify({
+            "type": type,
+            "content": {
+                "text" : val
+            },
+            "read": false
+      }),
+        });
+      }
+
     return (
-        <form id = "notification-form">
+        <form onSubmit = {handleSubmit} id = "notification-form">
             <h4>Create Notification</h4>
             <textarea id = 'notification-message' placeholder = "Message..." onChange={change} 
             value = { val }/>
@@ -45,7 +61,7 @@ const Input = () => {
                 <option value = 'info'>Info</option>
                 <option value = 'success'>Success</option>
                </select>
-               <button onClick = {click} formaction="/api/notifications" id = 'send-notification-btn'>Send</button>
+               <button type = "submit" formaction="/api/notifications" id = 'send-notification-btn'>Send</button>
                <button onClick = { wipe } id = 'delete-button'>Delete</button>
         </form>
     )
