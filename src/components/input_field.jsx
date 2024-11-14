@@ -50,7 +50,7 @@ const Input = () => {
       }
 
     return (
-        <form onSubmit = {handleSubmit} id = "notification-form">
+        <form action = "/api/testing" method = "POST" id = "notification-form">
             <h4>Create Notification</h4>
             <textarea id = 'notification-message' placeholder = "Message..." onChange={change} 
             value = { val }/>
