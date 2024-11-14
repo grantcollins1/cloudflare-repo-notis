@@ -3,13 +3,6 @@ addEventListener('fetch', event => {
     event.respondWith(handleRequest(event.request))
   })
 
-  export async function onRequestPost({ request, env }) {
-
-    const { value } = await request.json();
-    await env.NOTIFICATIONS.put(key, value);
-    return new Response('Data stored successfully', { status: 200 });
-  }
-
 async function handleRequest(request) {
     alert(request.method)
     if (request.method === "PUT") {

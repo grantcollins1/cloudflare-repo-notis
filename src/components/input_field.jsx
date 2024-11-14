@@ -7,7 +7,6 @@ const Input = () => {
     const [type, setType] = useState('');
     const click = (context, event) => {
         event.preventDefault()
-        alert(type)
         fetch("/api/notifications", {
   method: "POST",
   body: JSON.stringify({
@@ -50,7 +49,7 @@ const Input = () => {
       }
 
     return (
-        <form action = "/api/testing" method = "POST" id = "notification-form">
+        <form id = "notification-form">
             <h4>Create Notification</h4>
             <textarea id = 'notification-message' placeholder = "Message..." onChange={change} 
             value = { val }/>
@@ -60,7 +59,7 @@ const Input = () => {
                 <option value = 'info'>Info</option>
                 <option value = 'success'>Success</option>
                </select>
-               <button type = 'submit' id = 'send-notification-btn'>Send</button>
+               <button onClick = {handleSubmit} id = 'send-notification-btn'>Send</button>
                <button onClick = { wipe } id = 'delete-button'>Delete</button>
         </form>
     )
