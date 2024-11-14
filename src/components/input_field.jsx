@@ -37,8 +37,7 @@ const Input = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
-        const response = await fetch('/api/notifications', {
+        const response = await fetch('/api/testing', {
           method: 'POST',
           body: JSON.stringify({
             "type": type,
@@ -61,7 +60,7 @@ const Input = () => {
                 <option value = 'info'>Info</option>
                 <option value = 'success'>Success</option>
                </select>
-               <button type = "submit" formaction="/api/notifications" id = 'send-notification-btn'>Send</button>
+               <button type = 'submit' id = 'send-notification-btn'>Send</button>
                <button onClick = { wipe } id = 'delete-button'>Delete</button>
         </form>
     )
