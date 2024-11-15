@@ -13,9 +13,9 @@ const corsHeaders = {
   
 export async function onRequestPost(context) {
     const body = await context.request.json()
-    if (!body.type || !body.content || !body.content.text || !body.timestamp) {
-        return new Response({ status: 400 });
-      }
+    //if (!body.type || !body.content || !body.content.text || !body.timestamp) {
+        //return new Response({ status: 400 });
+      //}
     const data = await context.env.NOTIFICATIONS.get("notifications")
     const parsed_data = JSON.parse(data)
     parsed_data.push(body)
