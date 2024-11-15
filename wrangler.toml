@@ -1,0 +1,7 @@
+name = "cloudflare-repo-notis"
+pages_build_output_dir = "./dist"
+type = "javascript"
+
+[[kv_namespaces]]
+binding = "NOTIFICATIONS"
+id = "1b5c0d84c0754d849b5295b7dc80cca8"

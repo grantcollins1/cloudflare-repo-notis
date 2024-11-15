@@ -7,12 +7,13 @@ const Notifications = () => {
     const [notifications, setNotis] = useState([]);
     useEffect( () => {
         const getNotifications = async () =>  {
-            fetch("/api/notifications", {
+            const response = await fetch("/api/testing", {
                 method: "GET",
             })
+            //const retrieved_data = await response.json();
         };
-        setNotis(samples)
-        getNotifications();
+
+        setNotis(samples);
     }, []);
 
 
