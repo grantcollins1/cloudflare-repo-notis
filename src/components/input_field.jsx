@@ -37,15 +37,18 @@ const Input = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await fetch('/api/testing', {
-          method: 'POST',
-          body: JSON.stringify({
-            "type": type,
-            "content": {
-                "text1" : val
-            },
-            "read": false
-      }),
-        });
+            method: 'POST',
+            body: JSON.stringify({
+              "type": type,
+              "content": {
+                "text1": val
+              },
+              "read": false
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
       }
 
     return (
