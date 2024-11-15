@@ -7,12 +7,12 @@ const Notifications = () => {
     const [notifications, setNotis] = useState([]);
     useEffect( () => {
         const getNotifications = async () =>  {
-            const response = await fetch("/api/notifications", {
+            //const response = await fetch("/api/notifications", {
                 method: "GET",
-            })
-            const retrieved_data = await response.json();
-            const sorted_notis = retrieved_data.sort((a,b) => b.timestamp - a.timestamp);
-            setNotis(sorted_notis);
+            //})
+            //const retrieved_data = await response.json();
+            //const sorted_notis = retrieved_data.sort((a,b) => b.timestamp - a.timestamp);
+            setNotis(samples);
         };
         getNotifications();
 

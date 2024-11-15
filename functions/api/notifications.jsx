@@ -4,7 +4,7 @@ export async function onRequestPost(context) {
     const parsed_data = JSON.parse(data)
     parsed_data.push(body)
     await context.env.NOTIFICATIONS.put("notifications", JSON.stringify(parsed_data));
-    return new Response(data, { status: 200 })
+    return new Response(body, { status: 200 })
 }
 
 export async function onRequestGet(context) {

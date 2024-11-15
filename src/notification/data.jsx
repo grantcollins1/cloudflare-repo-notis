@@ -4,43 +4,49 @@ const samples = [
         "content": {
             "text" : "test1"
         },
-        "read": false
+        "read": false,
+        "timestamp": 1623456789
   },
-    {
-        "type": "alert",
-        "content": {
-            "text" : "ok den"
-        },
-        "read": false
+  {
+    "type": "success",
+    "content": {
+        "text" : "test1"
     },
-    {
-        "type": "alert",
-        "content": {
-            "text" : "ok den"
-        },
-        "read": false
+    "read": false,
+    "timestamp": 1623456789
+},
+{
+    "type": "success",
+    "content": {
+        "text" : "test1"
     },
-    {
-        "type": "alert",
-        "content": {
-            "text" : "ok den"
-        },
-        "read": false
+    "read": false,
+    "timestamp": 1623456789
+},
+{
+    "type": "success",
+    "content": {
+        "text" : "test1"
     },
-    {
-        "type": "info",
-        "content": {
-            "text" : "ok yeah"
-        },
-        "read": false
+    "read": false,
+    "timestamp": 1623456789
+},
+{
+    "type": "success",
+    "content": {
+        "text" : "test1"
     },
-    {
-        "type": "alert",
-        "content": {
-            "text" : "ok den"
-        },
-        "read": false
-    }
+    "read": false,
+    "timestamp": 1623456789
+},
+{
+    "type": "success",
+    "content": {
+        "text" : "test1"
+    },
+    "read": false,
+    "timestamp": 1623456789
+}
 ];
 
 export default samples
