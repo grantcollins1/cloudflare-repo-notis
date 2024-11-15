@@ -21,7 +21,7 @@ const Input = () => {
     }
     const wipe = (event) => {
         event.preventDefault()
-        fetch("/api/notifications", {
+        fetch("/api/testing", {
             method: "DELETE",
         });
 

@@ -69,3 +69,12 @@ export async function onRequestGet(context) {
     return new Response(body);
 
   }
+
+  export async function onRequestDelete(context) {
+    const data = await context.env.NOTIFICATIONS.get("notifications")
+      const empty_data = "[]"
+      await context.env.NOTIFICATIONS.put("notifications", empty_data);
+    return new Response({ 
+        "message" : "Notifications deleted successfully!"
+    }, { status: 200 });
+  }
