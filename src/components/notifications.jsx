@@ -11,7 +11,7 @@ const Notifications = () => {
                 method: "GET",
             })
             const retrieved_data = await response.json();
-            const sorted_notis = retrieved_data.sort((a,b => b.timestamp - a.timestamp));
+            const sorted_notis = retrieved_data.sort((a,b) => b.timestamp - a.timestamp);
             setNotis(sorted_notis);
         };
         getNotifications();
