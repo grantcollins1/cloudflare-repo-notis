@@ -44,6 +44,6 @@ const samples = [
 ];
 export async function onRequestPost(context) {
     const data = JSON.stringify(samples);
-    await context.env.NOTIFICATIONS.put("notifications", samples);
+    await context.env.NOTIFICATIONS.put("notifications", data);
     return new Response("Hello from workers!");
 }
