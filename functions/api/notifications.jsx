@@ -1,44 +1,23 @@
+export async function onRequestPost(context) {
+    const body = await context.request.json()
+    const data = await context.env.NOTIFICATIONS.get("notifications")
+    const parsed_data = JSON.parse(data)
+    parsed_data.push(body)
+    await context.env.NOTIFICATIONS.put("notifications", JSON.stringify(parsed_data));
+    return new Response(data, { status: 200 })
+}
 
-addEventListener('fetch', event => {
-    event.respondWith(handleRequest(event.request))
-  })
+export async function onRequestGet(context) {
+    const body = await context.env.NOTIFICATIONS.get("notifications");
+    JSON.parse(body)
+    return new Response(body);
 
-
-
-async function handleRequest(request) {
-    alert(request.method)
-    if (request.method === "POST") {
-      return updateNotifications(request);
-    } else if (request.method === "GET") {
-      return getNotifications(request);
-    }
-    else if (request.method === "DELETE") {
-        return clearNotifications(request)
-    }
-  }
-  
-  const setNotis = async (data, context) => await context.env.NOTIFICATIONS.put("notifications", data)
-
-  async function getNotifications(context) {
-
-    const body = await context.env.NOTIFICATIONS.get("notifications")
-    return new Response(body, { status: 200 })
   }
 
-async function updateNotifications(context, request) {
-    try {
-      const parsed_request = JSON.parse(request)
-      const data = await context.env.NOTIFICATIONS.get("notifications")
-      data.push(parsed_request)
-      await setNotis(data)
-      return new Response(data, { status: 200 })
-    } catch (err) {
-      return new Response(err, { status: 500 })
-    }
-  }
-
-  async function clearNotifications(request) {
-    await NOTIFICATIONS.delete("notifications")
+  export async function onRequestDelete(context) {
+    const data = await context.env.NOTIFICATIONS.get("notifications")
+      const empty_data = "[]"
+      await context.env.NOTIFICATIONS.put("notifications", empty_data);
     return new Response({ 
         "message" : "Notifications deleted successfully!"
     }, { status: 200 });

@@ -21,7 +21,7 @@ const Input = () => {
     }
     const wipe = (event) => {
         event.preventDefault()
-        fetch("/api/testing", {
+        fetch("/api/notifications", {
             method: "DELETE",
         });
 
@@ -36,14 +36,18 @@ const Input = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('/api/testing', {
+        const uuid = crypto.randomUUID();
+        const timestamp = Math.floor(Date.now() / 1000);
+        const response = await fetch('/api/notifications', {
             method: 'POST',
             body: JSON.stringify({
+              "id" : uuid,
               "type": type,
               "content": {
                 "text": val
               },
-              "read": false
+              "read": false,
+              "timestamp" : timestamp
             }),
             headers: {
               'Content-Type': 'application/json'
