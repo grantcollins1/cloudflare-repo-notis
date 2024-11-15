@@ -11,9 +11,10 @@ const Notifications = () => {
                 method: "GET",
             })
             const retrieved_data = await response.json();
+            setNotis(retrieved_data);
         };
+        getNotifications();
 
-        setNotis(retrieved_data);
     }, []);
 
 
