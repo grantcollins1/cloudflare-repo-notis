@@ -13,7 +13,6 @@ const corsHeaders = {
   
 export async function onRequestPost(context) {
     const body = await context.request.json()
-    const uuid = crypto.randomUUID();
     const timestamp = Math.floor(Date.now() / 1000);
     if (!Array.isArray(body)) {
         body = [body]
@@ -25,6 +24,7 @@ export async function onRequestPost(context) {
         if (!item.type || !item.content || !item.content.text) {
             return new Response({ status: 400 });
           }
+          const uuid = crypto.randomUUID();
           const input = ({
             "id" : uuid,
             "type": item.type,
