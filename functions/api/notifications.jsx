@@ -12,7 +12,7 @@ const corsHeaders = {
   }
   
 export async function onRequestPost(context) {
-    const body = await context.request.json()
+    let body = await context.request.json()
     const timestamp = Math.floor(Date.now() / 1000);
     if (!Array.isArray(body)) {
         body = [body]
