@@ -13,14 +13,33 @@ const corsHeaders = {
   
 export async function onRequestPost(context) {
     const body = await context.request.json()
-    //if (!body.type || !body.content || !body.content.text || !body.timestamp) {
-        //return new Response({ status: 400 });
-      //}
+    const uuid = crypto.randomUUID();
+    const timestamp = Math.floor(Date.now() / 1000);
+    if (!Array.isArray(body)) {
+        body = [body]
+    }
     const data = await context.env.NOTIFICATIONS.get("notifications")
     const parsed_data = JSON.parse(data)
-    parsed_data.push(body)
+    let values = []
+    body.forEach((item) => {
+        if (!item.type || !item.content || !item.content.text) {
+            return new Response({ status: 400 });
+          }
+          const input = ({
+            "id" : uuid,
+            "type": item.type,
+            "content": {
+              "text": item.content.text
+            },
+            "read": false,
+            "timestamp" : timestamp
+          })
+          values.push(input)
+          parsed_data.push(input)
+      });
+    
     await context.env.NOTIFICATIONS.put("notifications", JSON.stringify(parsed_data));
-    return new Response(JSON.stringify(body), {
+    return new Response(JSON.stringify(values), {
         status: 200,
         headers: corsHeaders,
       });

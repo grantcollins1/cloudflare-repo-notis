@@ -15,18 +15,14 @@ const Input = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const uuid = crypto.randomUUID();
-        const timestamp = Math.floor(Date.now() / 1000);
         const response = await fetch('/api/notifications', {
             method: 'POST',
             body: JSON.stringify({
-              "id" : uuid,
               "type": type,
               "content": {
                 "text": val
               },
-              "read": false,
-              "timestamp" : timestamp
+              "read": false
             }),
             headers: {
               'Content-Type': 'application/json'
