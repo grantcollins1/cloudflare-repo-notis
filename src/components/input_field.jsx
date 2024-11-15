@@ -67,7 +67,6 @@ const Input = () => {
                 <option value = 'success'>Success</option>
                </select>
                <button onClick = {handleSubmit} id = 'send-notification-btn'>Send</button>
-               <button onClick = { wipe } id = 'delete-button'>Delete</button>
         </form>
     )
 
