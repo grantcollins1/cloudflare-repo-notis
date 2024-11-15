@@ -4,6 +4,21 @@ const corsHeaders = {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
+  function isValidNotification(notification) {
+    return (
+      notification &&
+      typeof notification === "object" &&
+      "type" in notification &&
+      typeof notification.type === "string" &&
+      "content" in notification &&
+      typeof notification.content === "object" &&
+      "text" in notification.content &&
+      typeof notification.content.text === "string" &&
+      "read" in notification &&
+      typeof notification.read === "boolean"
+    );
+  }
+
   export async function onRequestOptions(context) {
     return new Response(null, {
       status: 204,
@@ -21,9 +36,17 @@ export async function onRequestPost(context) {
     const parsed_data = JSON.parse(data)
     let values = []
     body.forEach((item) => {
-        if (!item.type || !item.content || !item.content.text) {
-            return new Response({ status: 400 });
+        if (!isValidNotification(item)) {
+            return new Response(
+                JSON.stringify({ error: "Request Error" }),
+                {
+                  status: 400,
+                  headers: corsHeaders,
+                }
+              )
           }
+        })
+    body.forEach((item) => {
           const uuid = crypto.randomUUID();
           const input = ({
             "id" : uuid,
