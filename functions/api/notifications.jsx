@@ -28,10 +28,10 @@ export async function onRequestPost(context) {
 
 export async function onRequestGet(context) {
     const body = await context.env.NOTIFICATIONS.get("notifications");
-    return new Response(body), {
+    return new Response(body, {
         status: 200,
         headers: corsHeaders,
-      };
+      });
   }
 
   export async function onRequestDelete(context) {
