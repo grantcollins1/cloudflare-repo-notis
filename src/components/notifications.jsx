@@ -10,10 +10,10 @@ const Notifications = () => {
             const response = await fetch("/api/testing", {
                 method: "GET",
             })
-            //const retrieved_data = await response.json();
+            const retrieved_data = await response.json();
         };
 
-        setNotis(samples);
+        setNotis(retrieved_data);
     }, []);
 
 
