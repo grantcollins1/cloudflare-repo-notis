@@ -20,7 +20,7 @@ export async function onRequestPost(context) {
     const parsed_data = JSON.parse(data)
     parsed_data.push(body)
     await context.env.NOTIFICATIONS.put("notifications", JSON.stringify(parsed_data));
-    return new Response(body, {
+    return new Response(JSON.stringify(body), {
         status: 200,
         headers: corsHeaders,
       });
@@ -29,7 +29,7 @@ export async function onRequestPost(context) {
 export async function onRequestGet(context) {
     const body = await context.env.NOTIFICATIONS.get("notifications");
     JSON.parse(body)
-    return new Response(body, {
+    return new Response(JSON.stringify(body), {
         status: 200,
         headers: corsHeaders,
       });
@@ -39,7 +39,7 @@ export async function onRequestGet(context) {
     const data = await context.env.NOTIFICATIONS.get("notifications")
       const empty_data = "[]"
       await context.env.NOTIFICATIONS.put("notifications", empty_data);
-    return new Response({ 
+    return new Response(JSON.stringify({ 
         "message" : "Notifications deleted successfully!"
-    }, { status: 200, headers: corsHeaders });
+    }), { status: 200, headers: corsHeaders });
   }
