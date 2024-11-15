@@ -5,27 +5,6 @@ import '../styles/NotificationForm.css'
 const Input = () => {
     const [val, setVal] = useState('')
     const [type, setType] = useState('');
-    const click = (context, event) => {
-        event.preventDefault()
-        fetch("/api/notifications", {
-  method: "POST",
-  body: JSON.stringify({
-        "type": type,
-        "content": {
-            "text" : val
-        },
-        "read": false
-  }),
-});
-
-    }
-    const wipe = (event) => {
-        event.preventDefault()
-        fetch("/api/notifications", {
-            method: "DELETE",
-        });
-
-    }
     const handleSelectChange = (event) => {
         setType(event.target.value);
     }
