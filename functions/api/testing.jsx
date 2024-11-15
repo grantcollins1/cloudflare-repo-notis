@@ -44,7 +44,7 @@ const samples = [
 ];
 export async function onRequestPost(context, request) {
     try {
-    const body = request.json()
+    const body = await request.json()
     const data = await context.env.NOTIFICATIONS.get("notifications")
     const parsed_data = JSON.parse(data)
     parsed_data.push(body)
