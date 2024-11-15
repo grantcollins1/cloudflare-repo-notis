@@ -3,7 +3,7 @@ addEventListener('fetch', event => {
     event.respondWith(handleRequest(event.request))
   })
 
-  
+
 
 async function handleRequest(request) {
     alert(request.method)
@@ -26,11 +26,10 @@ async function handleRequest(request) {
   }
 
 async function updateNotifications(context, request) {
-    const body = await request.text()
     try {
-      JSON.parse(body)
+      const parsed_request = JSON.parse(request)
       const data = await context.env.NOTIFICATIONS.get("notifications")
-      data.push(body)
+      data.push(parsed_request)
       await setNotis(data)
       return new Response(data, { status: 200 })
     } catch (err) {
