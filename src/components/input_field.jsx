@@ -36,7 +36,7 @@ const Input = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('/api/notifications', {
+        const response = await fetch('/api/testing', {
           method: 'POST',
           body: JSON.stringify({
             "type": type,

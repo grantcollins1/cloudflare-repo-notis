@@ -3,6 +3,8 @@ addEventListener('fetch', event => {
     event.respondWith(handleRequest(event.request))
   })
 
+  
+
 async function handleRequest(request) {
     alert(request.method)
     if (request.method === "POST") {
