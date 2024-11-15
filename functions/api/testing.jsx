@@ -45,15 +45,15 @@ const samples = [
 export async function onRequestPost(context, request) {
     try {
       const data = await context.env.NOTIFICATIONS.get("notifications")
-      JSON.parse(data)
-      data.push(JSON.stringify({
+      const parsed_data = JSON.parse(data)
+      parsed_data.push({
         "type": "success",
         "content": {
             "text" : "weider"
         },
         "read": false
-  }))
-      await context.env.NOTIFICATIONS.put("notifications", data);
+    })
+      await context.env.NOTIFICATIONS.put("notifications", JSON.stringify(parsed_data));
       return new Response(data, { status: 200 })
     } catch (err) {
       return new Response(err, { status: 500 })
