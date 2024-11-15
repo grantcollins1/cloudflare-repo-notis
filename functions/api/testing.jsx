@@ -1,4 +1,4 @@
-onst samples = [
+const samples = [
     {
         "type": "success",
         "content": {
