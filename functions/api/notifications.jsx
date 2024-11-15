@@ -28,7 +28,8 @@ export async function onRequestPost(context) {
 
 export async function onRequestGet(context) {
     const body = await context.env.NOTIFICATIONS.get("notifications");
-    return new Response(body, {
+    const parsed = JSON.parse(body)
+    return new Response(JSON.stringify(parsed), {
         status: 200,
         headers: corsHeaders,
       });
