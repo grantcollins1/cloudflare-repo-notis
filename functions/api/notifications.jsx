@@ -1,17 +1,35 @@
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, DELETE",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+
+  export async function onRequestOptions(context) {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders,
+    });
+  }
+  
 export async function onRequestPost(context) {
     const body = await context.request.json()
     const data = await context.env.NOTIFICATIONS.get("notifications")
     const parsed_data = JSON.parse(data)
     parsed_data.push(body)
     await context.env.NOTIFICATIONS.put("notifications", JSON.stringify(parsed_data));
-    return new Response(body, { status: 200 })
+    return new Response(body, {
+        status: 200,
+        headers: corsHeaders,
+      });
 }
 
 export async function onRequestGet(context) {
     const body = await context.env.NOTIFICATIONS.get("notifications");
     JSON.parse(body)
-    return new Response(body);
-
+    return new Response(body, {
+        status: 200,
+        headers: corsHeaders,
+      });
   }
 
   export async function onRequestDelete(context) {
@@ -20,5 +38,5 @@ export async function onRequestGet(context) {
       await context.env.NOTIFICATIONS.put("notifications", empty_data);
     return new Response({ 
         "message" : "Notifications deleted successfully!"
-    }, { status: 200 });
+    }, { status: 200, headers: corsHeaders });
   }
