@@ -41,7 +41,7 @@ const Input = () => {
           body: JSON.stringify({
             "type": type,
             "content": {
-                "text" : val
+                "text1" : val
             },
             "read": false
       }),
