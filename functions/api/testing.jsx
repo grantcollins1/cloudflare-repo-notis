@@ -62,6 +62,6 @@ export async function onRequestPost(context, request) {
 export async function onRequestGet(context) {
     const body = await context.env.NOTIFICATIONS.get("notifications");
     JSON.parse(body)
-    return body;
+    return new Response(body);
 
   }
